@@ -1,30 +1,61 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="common-layout">
+    <el-container>
+      <el-header>
+        <el-row>
+          <el-col :span="4">
+            <div class="logo">
+              <router-link :to="{ name: 'home' }" class="logo_link">MovieFinder</router-link>
+            </div>
+          </el-col>
+          <el-col :span="16">
+            <el-input
+                v-model="search"
+                class="w-50 m-2"
+                size="large"
+                placeholder="Please Input"
+                :prefix-icon="Search"
+            />
+          </el-col>
+          <el-col :span="4">
+            <div class="actions">
+              <el-button type="success">+ Add</el-button>
+<!--              @TODO remove search link -->
+              <el-button type="success" @click="router.push({ name: 'search' })">search</el-button>
+<!--              <router-link :to="{ name: 'search' }">Add</router-link>-->
+            </div>
+          </el-col>
+        </el-row>
+      </el-header>
+
+      <el-main>
+        <router-view/>
+      </el-main>
+    </el-container>
+  </div>
 </template>
+<script setup lang="ts">
+import { Search } from '@element-plus/icons-vue'
+import {ref} from "vue";
+import router from "@/router";
 
+const search = ref('')
+
+
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
-
-nav {
-  padding: 30px;
+.logo_link {
+  font-size: var(--el-font-size-extra-large)
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.actions {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: end;
 }
 </style>
