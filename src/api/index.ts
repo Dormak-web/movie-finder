@@ -1,13 +1,7 @@
 import httpFactory from "./client";
+import {IMovieSearchQuery} from "@/store/models/movie-search";
 
 const client = httpFactory();
-
-interface movieIndex {
-    s: string,
-    page?: number | 1,
-    type?: 'movie' | 'series' | 'episode',
-    y?: number
-}
 
 interface movieView {
     t?: string,
@@ -16,7 +10,7 @@ interface movieView {
 
 const api = {
     movie: {
-        index: (data: movieIndex) => client.get('', {params: data}),
+        index: (data: IMovieSearchQuery) => client.get('', {params: data}),
         create: (data: any) => client.post('', JSON.stringify(data)),
         view: (data: movieView) => client.post('', {params: data}),
     }
