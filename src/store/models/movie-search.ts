@@ -1,22 +1,22 @@
-import {Movie} from "@/store/models/movie";
+import {IMovie, Movie} from "@/store/models/movie";
 
 export interface IMovieSearch {
-    items: Array<Movie> | [],
-    totalResults: string,
+    items: Array<IMovie | Movie> | [],
+    totalResults: number,
     response: string,
 }
 
 export interface IMovieSearchQuery {
-    s: string,
+    s?: string,
     page?: number | 1,
     type?: 'movie' | 'series' | 'episode',
-    y?: number
+    y?: number | null
 }
 
 export class MovieSearch {
     constructor(
-       public items: Array<Movie> | [],
-       public totalResults: string,
+       public items: Array<IMovie> | [],
+       public totalResults: number,
        public response: string
     ) {}
 

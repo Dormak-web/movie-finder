@@ -3,7 +3,6 @@
     <el-container>
       <el-header>
         <Header/>
-        <el-divider />
       </el-header>
       <el-main>
         <router-view/>

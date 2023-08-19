@@ -1,21 +1,23 @@
 import {defineStore} from "pinia";
 import api from "@/api";
-import {IMovieSearch, IMovieSearchQuery, MovieSearch} from "@/store/models/movie-search";
+import {IMovieSearchQuery, MovieSearch} from "@/store/models/movie-search";
 
 export const useMovieSearchStore = defineStore('movie-search', {
-    state: (): {data: IMovieSearch, query: IMovieSearchQuery} => ({
+    state: (): {data: MovieSearch, query: IMovieSearchQuery} => ({
         data: {
             items: [],
-            totalResults: '',
+            totalResults: 0,
             response: '',
         },
         query: {
             s: '',
+            page: 1
         }
     }),
     actions: {
-        async search(params: IMovieSearchQuery) {
-            const res= await api.movie.index(params);
+        async search(params?: IMovieSearchQuery) {
+            const res= await api.movie.index(params || this.query);
+
             this.data = MovieSearch.create(res.data);
         }
     }
