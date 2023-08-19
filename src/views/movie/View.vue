@@ -1,7 +1,7 @@
 <template>
   <movie-layout :title="movie.data.title || ''" @pre-on-back="onClear">
     <template #poster>
-      <el-image :src="movie.data.poster" class="image" fit="cover">
+      <el-image :src="movie.data.poster" class="image" fit="cover" :alt="movie.data.imdbID">
         <template #error>
           <el-empty :image-size="80" description=" "/>
         </template>

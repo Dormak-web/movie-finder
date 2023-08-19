@@ -2,7 +2,7 @@
   <el-card @click="router.push({name: 'movie.view', params: {id: movie?.imdbID}})" shadow="hover" style="cursor: pointer">
     <div class="container">
 
-      <el-image :src="movie?.poster" class="image" fit="cover">
+      <el-image :src="movie?.poster" class="image" fit="cover" :alt="movie?.imdbID">
         <template #error>
           <el-empty :image-size="80" description=" "/>
         </template>

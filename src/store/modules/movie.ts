@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import api from "@/api";
-import {IMovie, IMovieQuery, Movie, MovieView} from "@/store/models/Movie";
+import {IMovie, IMovieQuery, MovieView} from "@/store/models/Movie";
 
 function emptyMovie (): MovieView {
     return {

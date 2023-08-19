@@ -9,7 +9,7 @@
           :auto-upload="false"
           :on-change="onChangeUpload"
       >
-        <img v-if="posterUrl" :src="posterUrl" class="avatar" />
+        <img v-if="posterUrl" :src="posterUrl" class="avatar" alt="poster"/>
         <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
       </el-upload>
     </template>
