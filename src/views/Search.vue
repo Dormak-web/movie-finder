@@ -5,6 +5,7 @@
       <el-divider/>
 
       <el-carousel
+          v-if="pages.length > 0"
           @change="onChange"
           indicator-position="outside"
           trigger="click"
@@ -21,7 +22,7 @@
           </div>
         </el-carousel-item>
       </el-carousel>
-
+      <el-empty v-else description="No movies"/>
     </div>
   </page-layout>
 </template>

@@ -4,7 +4,7 @@
 
       <el-image :src="movie?.poster" class="image" fit="cover">
         <template #error>
-          <el-empty image-size="80" description=" "/>
+          <el-empty :image-size="80" description=" "/>
         </template>
       </el-image>
 

@@ -16,9 +16,10 @@ export const typeOptions = [
 export interface IMovie {
     title: string,
     year: string,
-    imdbID: string,
-    type?: 'movie' | 'series' | 'episode',
-    poster: string
+    imdbID?: string,
+    type?: 'movie' | 'series' | 'episode' | null,
+    poster: string,
+    director?: string | null,
 }
 
 export interface IMovieQuery {

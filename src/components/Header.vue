@@ -27,7 +27,9 @@
         <el-col :span="6">
           <div class="header-col">
             <el-date-picker
-                v-model="year"
+                v-model="movieSearch.query.y"
+                format="YYYY"
+                value-format="YYYY"
                 type="year"
                 placeholder="Pick a year"
                 size="large"
@@ -52,23 +54,18 @@
 
     <el-col :span="4">
       <div class="header-actions">
-<!--        @TODO Add create movie-->
-        <el-button type="success" @click="router.push({ name: 'search' })">+ Add</el-button>
+        <el-button type="success" @click="router.push({ name: 'movie.create' })">+ Add</el-button>
       </div>
     </el-col>
   </el-row>
 </template>
 <script setup lang="ts">
-import {ref} from "vue";
 import router from "@/router";
 import {useMovieSearchStore} from "@/store/modules/movie-search";
 import {typeOptions} from "@/store/models/Movie";
 import {Search} from '@element-plus/icons-vue'
 
-const year = ref('');
-
 const movieSearch = useMovieSearchStore();
-
 const querySearch = async (queryString: string, cb: any) => {
   movieSearch.query.s = queryString;
   await movieSearch.search();
@@ -82,15 +79,12 @@ const handleSelect = (data: { value: string, id: string }) => {
 }
 
 const handleSearch = () => {
-  const qYear = year.value ? new Date(year.value).getFullYear() : null;
-  movieSearch.query.y = qYear
-
   movieSearch.query.page = 1
   router.push({
     name: 'search',
     query: {
       s: movieSearch.query.s,
-      y: qYear,
+      y: movieSearch.query.y,
       type: movieSearch.query.type,
     }
   })

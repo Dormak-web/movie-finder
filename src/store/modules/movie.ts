@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import api from "@/api";
-import {IMovieQuery, MovieView} from "@/store/models/Movie";
+import {IMovie, IMovieQuery, Movie, MovieView} from "@/store/models/Movie";
 
 function emptyMovie (): MovieView {
     return {
@@ -31,13 +31,28 @@ function emptyMovie (): MovieView {
         response: null,
     }
 }
-
+function emptyForm () {
+    return {
+        title: '',
+        year: '',
+        type: null,
+        poster: '',
+        director: ''
+    }
+}
 export const useMovieStore = defineStore('movie', {
-    state: (): {data: MovieView, query: IMovieQuery} => ({
+    state: (): {data: MovieView, query: IMovieQuery, form: IMovie} => ({
         data: emptyMovie(),
         query: {
             i: '',
             plot: 'full',
+        },
+        form: {
+            title: '',
+            year: '',
+            type: null,
+            poster: '',
+            director: ''
         }
     }),
     actions: {
@@ -48,6 +63,9 @@ export const useMovieStore = defineStore('movie', {
         },
         clear () {
             this.data = emptyMovie();
-        }
+        },
+        clearForm () {
+            this.form = emptyForm();
+        },
     }
 })
