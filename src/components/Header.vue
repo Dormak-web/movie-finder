@@ -62,7 +62,7 @@
 import {ref} from "vue";
 import router from "@/router";
 import {useMovieSearchStore} from "@/store/modules/movie-search";
-import {typeOptions} from "@/store/models/movie";
+import {typeOptions} from "@/store/models/Movie";
 import {Search} from '@element-plus/icons-vue'
 
 const year = ref('');

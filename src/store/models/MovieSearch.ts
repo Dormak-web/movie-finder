@@ -1,4 +1,4 @@
-import {IMovie, Movie} from "@/store/models/movie";
+import {IMovie, Movie} from "@/store/models/Movie";
 
 export interface IMovieSearch {
     items: Array<IMovie | Movie> | [],

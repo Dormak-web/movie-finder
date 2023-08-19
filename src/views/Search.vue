@@ -31,8 +31,8 @@ import PageLayout from "@/components/PageLayout.vue";
 import {useRoute} from "vue-router";
 import {onMounted, Ref, ref, watch} from "vue";
 import {useMovieSearchStore} from "@/store/modules/movie-search";
-import {IMovie, Movie} from "@/store/models/movie";
-import SearchMovieCard from "@/components/Search/SearchMovieCard.vue";
+import {IMovie, Movie} from "@/store/models/Movie";
+import SearchMovieCard from "@/components/search/SearchMovieCard.vue";
 
 const route = useRoute();
 const movieSearch = useMovieSearchStore();

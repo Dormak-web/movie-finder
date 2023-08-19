@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import api from "@/api";
-import {IMovieSearchQuery, MovieSearch} from "@/store/models/movie-search";
+import {IMovieSearchQuery, MovieSearch} from "@/store/models/MovieSearch";
 
 export const useMovieSearchStore = defineStore('movie-search', {
     state: (): {data: MovieSearch, query: IMovieSearchQuery} => ({

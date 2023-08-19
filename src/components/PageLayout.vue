@@ -2,9 +2,11 @@
   <div class="container">
     <el-card class="content" :style="maxWidth ? {maxWidth: maxWidth + 'px'} : {}">
       <template #header>
-        <el-page-header :icon="ArrowLeft">
+        <el-page-header :icon="ArrowLeft" @back="handleOnBack">
           <template #content>
-            <span class="text-large font-600 mr-3" v-text="props.title"/>
+            <span class="text-large font-600 mr-3" >
+              <view-text :text="props.title"/>
+            </span>
           </template>
         </el-page-header>
       </template>
@@ -16,9 +18,23 @@
 </template>
 <script lang="ts" setup>
 import {ArrowLeft} from '@element-plus/icons-vue'
-import {defineProps} from "vue";
+import {defineProps, defineEmits} from "vue";
+import ViewText from "@/components/ViewText.vue";
+import router from "@/router";
 
-const props = defineProps({title: String, maxWidth: Number})
+const props = defineProps({
+  title: String || '',
+  maxWidth: Number,
+})
+
+const emit = defineEmits(['preOnBack'])
+
+
+const handleOnBack = () => {
+  emit("preOnBack");
+  router.go(-1);
+}
+
 </script>
 <style scoped>
 .container {

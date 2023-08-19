@@ -5,10 +5,6 @@
       <el-image :src="movie?.poster" class="image" fit="cover">
         <template #error>
           <el-empty image-size="80" description=" "/>
-<!--          <div class="image-slot">-->
-<!--            -->
-<!--            <el-icon ><icon-picture /></el-icon>-->
-<!--          </div>-->
         </template>
       </el-image>
 
@@ -25,7 +21,7 @@
 <script lang="ts" setup>
 import {defineProps} from "vue/dist/vue";
 import router from "@/router";
-import {Movie} from "@/store/models/movie";
+import {Movie} from "@/store/models/Movie";
 
 const props = defineProps({
   movie: Movie,
